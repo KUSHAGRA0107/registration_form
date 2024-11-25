@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="registration-form">
+            <!-- Left Side: Image -->
+            <div class="left-side">
+                <img src="image.jpg" alt="Registration Image">
+            </div>
+
+            <!-- Right Side: Form -->
+            <div class="right-side">
+                <h2>Registration Form</h2>
+                <form action="/submit-form.php" method="POST" name="myForm" onsubmit="return validateForm()">
+                    <!-- Full Name -->
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="Username" name="Username" placeholder="Enter your username" required>
+                        <span class="formerror"><b></b></span>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <span class="formerror"><b></b></span>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="input-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password"
+                            placeholder="Confirm your password" required>
+                        <span class="formerror"><b></b></span>
+                    </div>
+
+                    <!-- Mobile Number -->
+                    <div class="input-group">
+                        <label for="mobile">Mobile Number</label>
+                        <input type="number" id="mobile" name="mobile" placeholder="Enter your Mobile Number" required>
+                        <span class="formerror"><b></b></span>
+                    </div>
+
+                    <!-- Date of Birth -->
+                    <div class="input-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" required>
+                        <span class="formerror"><b></b></span>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        <span class="formerror"><b></b></span>
+                    </div>
+
+                    <!-- City -->
+                    <div class="input-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" placeholder="Enter your city" required>
+                        <span class="formerror"><b></b></span>
+                    </div>
+
+                    <!-- State -->
+                    <div class="input-group">
+                        <label for="state">State</label>
+                        <input type="text" id="state" name="state" placeholder="Enter your state" required>
+                        <span class="formerror"><b></b></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function setError(id, errorMsg) {
+            element = document.getElementById(id);
+            element.getElementsbyClassName('formerror')[0].innerHTML = errorMsg;
+        }
+
+        function validateForm() {
+            var returnValue = true;
+            // name verification
+            // Get the username field value using the name attribute
+            // give me the form with name myForm, and with attribute username and the value that userentered
+            var Username = document.forms["myForm"]["Username"].value;
+            if (Username.length < 5) {
+                setError("Username", "*Invalid UserName Entered");
+                returnValue = false;
+            }
+
+            // password verification
+            var password = document.forms["myForm"]["password"].value;
+            var passwordMsg = validatePassword(password);
+            if(passwordMsg != "true"){
+                setError(password, isValid);
+                returnValue = false;
+            }
+            
+            var confirmPassword = document.forms["myForm"]["confirm_password"].value;
+            if(confirmPassword != password){
+                setError(confirmPassword,"Password Not Matched");
+                returnValue = false;
+            }
+
+            return returnValue;
+        }
+
+        function validatePassword(password) {
+            const minLength = 8; // Minimum length for the password
+            const uppercaseRegex = /[A-Z]/; // At least one uppercase letter
+            const lowercaseRegex = /[a-z]/; // At least one lowercase letter
+            const numberRegex = /[0-9]/; // At least one number
+            const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/; // At least one special character
+
+            // Check if the password meets all the criteria
+            if (password.length < minLength) {
+                return "Password must be at least " + minLength + " characters long.";
+            }
+
+            if (!uppercaseRegex.test(password)) {
+                return "Password must contain at least one uppercase letter.";
+            }
+
+            if (!lowercaseRegex.test(password)) {
+                return "Password must contain at least one lowercase letter.";
+            }
+
+            if (!numberRegex.test(password)) {
+                return "Password must contain at least one number.";
+            }
+
+            if (!specialCharRegex.test(password)) {
+                return "Password must contain at least one special character (!, @, #, $, %, etc.).";
+            }
+
+            // If all checks pass, return true
+            return "true";
+        }
+
+
+
+    </script>
+</body>
+
+</html>

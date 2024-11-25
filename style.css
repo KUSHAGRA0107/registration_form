@@ -1,0 +1,140 @@
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    height: 100vh; /* Ensure body takes full height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* Remove any additional padding */
+}
+
+.container {
+    display: flex;
+    flex-direction: row; /* Keeps the image and form side by side */
+    width: 100vw; /* Full width of the page */
+    height: 100vh; /* Full height of the page */
+    padding: 20px; /* Adds padding inside the container */
+    border-radius: 10px;
+    background-color: #ffffff;
+    overflow: hidden; /* Prevents any overflowing content */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form {
+    display: flex;
+    width: 100%;
+    height: 100%; /* Ensure the form and image take full height of container */
+}
+
+.left-side {
+    flex: 1;
+    background-color: #f1f1f1;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensures the image doesn't overflow outside the container */
+}
+
+.left-side img {
+    width: 100%; /* Make the image take the full width of the container */
+    height: 100%; /* Make the image take the full height of the container */
+    object-fit: cover; /* Ensures the image fills the container without distortion */
+    border-radius: 10px; /* Applies rounded corners to the image */
+}
+
+.right-side {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto; /* Allows scrolling of the form when content overflows */
+    max-height: 100%; /* Ensures the form is contained within the height of the container */
+}
+
+.right-side h2 {
+    font-size: 2rem; /* Makes the heading more prominent */
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for an appealing look */
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #333;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stacks the image and form vertically */
+        padding: 15px;
+        width: 100vw; /* Full width on smaller screens */
+        height: 100vh; /* Full height on smaller screens */
+    }
+
+    .left-side {
+        height: 250px; /* Restricts the image height for smaller screens */
+    }
+
+    .right-side {
+        padding: 20px;
+    }
+
+    .right-side h2 {
+        font-size: 1.5rem;
+    }
+}
+
+.formerror{
+    color: red;
+}
